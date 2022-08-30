@@ -3,7 +3,7 @@ A Shiny app showing the recent COVID-19 cases reported on a map of Scotland.
 
 This was created using a docker image. The image uses the latest build of the shiny image from the rocker repository (https://github.com/rocker-org/rocker-versioned2)
 
-There are also additional dependencies that are required for install the 'sf' R package.
+There are also additional dependencies that are required for installing the 'sf' R package.
 
 (I had an initial problem getting the app to work because the 'sf' package would not install so I found the additional dependencies)
 
