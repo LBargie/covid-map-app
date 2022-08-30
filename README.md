@@ -13,6 +13,10 @@ docker build -t covid-map-app .
 
 (be warned: it took me about ~ 1 hour to build the image)
 
+Alternatively, pull the image from my Docker Hub repository using the following on the command line:
+
+docker pull lbargie/covid-map-app
+
 To run the app enter the following on the command line:
 
 docker run --rm -p 3838:3838 covid-map-app
