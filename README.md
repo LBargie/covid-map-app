@@ -1,4 +1,4 @@
-# covid-map-app
+# Scotland COVID map app
 A Shiny app showing the recent COVID-19 cases reported on a map of Scotland.
 
 This was created using a docker image. The image uses the latest build of the shiny image from the rocker repository (https://github.com/rocker-org/rocker-versioned2)
