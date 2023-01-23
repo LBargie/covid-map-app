@@ -9,16 +9,16 @@ There are also additional dependencies that are required for installing the 'sf'
 
 To build the image run the following on the command line:
 
-docker build -t covid-map-app . 
+`docker build -t covid-map-app .`
 
 (be warned: it took me about ~ 1 hour to build the image)
 
 Alternatively, pull the image from my Docker Hub repository using the following on the command line:
 
-docker pull lbargie/covid-map-app
+`docker pull lbargie/covid-map-app`
 
 To run the app enter the following on the command line:
 
-docker run --rm -p 3838:3838 covid-map-app
+`docker run --rm -p 3838:3838 covid-map-app`
 
 Navigate to http://localhost:3838 in your web browser to view the app.
