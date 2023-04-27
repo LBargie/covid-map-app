@@ -11,23 +11,25 @@ server <- function(input, output){
   resource <- "e8454cf0-1152-4bcb-b9da-4343f625dfef"
   
   # URL for local authority areas map in the UK
-  map_url <- "https://opendata.arcgis.com/datasets/21f7fb2d524b44c8ab9dd0f971c96bba_0.geojson"
-  
+  # What to search for if URL doesn't work (date could be different): Local Authority Districts (December 2022) Boundaries UK BUC
+  map_url <- 
+    "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_December_2022_Boundaries_UK_BGC/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
+
   la_cases <- covid_data(resource)
   
   map <- st_read(map_url)
-  
+
   scot_map <- map |>
-    filter(str_detect(map$LAD21CD, "S"))
+    filter(str_detect(map$LAD22CD, "S"))
   
-  data <- left_join(scot_map, la_cases[c("CA", "NewPositive", "TotalCases")], by = c("LAD21CD" = "CA"))
+  data <- left_join(scot_map, la_cases[c("CA", "NewPositive", "TotalCases")], by = c("LAD22CD" = "CA"))
   
   output$map<- renderPlotly({
     plot_ly(
       data,
       type = "scatter",
       mode = "lines",
-      split = ~LAD21NM,
+      split = ~LAD22NM,
       color = ~NewPositive,
       colors = "Blues",
       stroke = I("black"),
@@ -35,7 +37,7 @@ server <- function(input, output){
       text = ~paste(
         "New Cases:", NewPositive, 
         "\nTotal Cases:", TotalCases,
-        "\nLocation:", LAD21NM, 
+        "\nLocation:", LAD22NM, 
         "\nDate:", unique(la_cases$Date)
       ),
       hoverinfo = "text",
